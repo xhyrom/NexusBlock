@@ -1,0 +1,13 @@
+name: NexusBlock
+description: Just destroy the block
+main: hyro.lib.Main
+version: 0.1.0
+api-version: 1.13
+author: Hyro
+softdepend: [HolographicDisplays]
+
+commands:
+  nexusblock:
+    description: Setup/info
+    aliases:
+      - blocknexus

@@ -1,0 +1,30 @@
+prefix: "&8[&cNexusBlock&8] &7"
+nexuses:
+  DIAMOND_BLOCK:
+    name: "&b&lDIAMOND NEXUS"
+    info: "Destory to get reward"
+
+    # Max block health
+    maxHealth: 10
+
+    # Number of destructions (DON'T CHANGE)
+    health: 0
+
+    # HealthBar in hologram
+    healthBar: "{health}/{maxHealth}"
+
+    # Block Location
+    location:
+      x: 10.0
+      y: 10.0
+      z: 10.0
+      yaw: 0.0
+      pitch: 0.0
+      world: "world"
+
+    # Rewards after destroy
+    rewards:
+      - "say {player} hello"
+
+    # Respawn after destroy (in seconds)
+    respawn: 5
