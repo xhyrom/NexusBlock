@@ -9,4 +9,4 @@ In "Releases" you can download the plugin.
 
 Command: `/nexusblock` or `/blocknexus`
 
-![image](readme/images.png)
+![image](https://raw.githubusercontent.com/xHyroM/NexusBlock/main/readme/image.png)
