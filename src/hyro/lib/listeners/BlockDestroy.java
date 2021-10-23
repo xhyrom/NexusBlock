@@ -17,7 +17,6 @@ public class BlockDestroy implements Listener {
 
         if(nexus != null) {
             if(eventLocation.getBlockX() == nexus.location.getBlockX() && eventLocation.getBlockY() == nexus.location.getBlockY() && eventLocation.getBlockZ() == nexus.location.getBlockZ() && eventLocation.getWorld().getName() == nexus.location.getWorld().getName()) {
-                System.out.println("canceeel");
                 event.setCancelled(true);
                 nexus.onHit(event.getPlayer());
             }
