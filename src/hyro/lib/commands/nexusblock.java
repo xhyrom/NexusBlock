@@ -28,7 +28,7 @@ public class nexusblock implements CommandExecutor {
 
         if((args.length == 0 || args[0].equalsIgnoreCase("info")) && p.hasPermission("nexusblock.admin")) {
             Message.sendMessage(p, "Plugin by &c&nxHyroM#2851 &7available on github &c&nhttps://github.com/xHyroM/NexusBlock");
-            Message.sendMessageNoPrefix(p, "\n&c&nAdmin Commands:\n\n&c/nexusblock reload &8- &7Reload plugin\n&c/nexusblock create <name>");
+            Message.sendMessageNoPrefix(p, "\n&c&nAdmin Commands:\n\n&c/nexusblock reload &8- &7Reload plugin\n&c/nexusblock create\n&c/nexusblock remove");
             return true;
         }
 
