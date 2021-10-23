@@ -14,7 +14,7 @@ In "Releases" you can download the plugin.
 `/nexusblock create` - Create the nexus.  
 `/nexusblock remove` - Remove the nexus.  
     
-### Previev: 
+### Preview: 
 <a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://raw.githubusercontent.com/xHyroM/NexusBlock/main/readme/image.png"></a> 
     
 </div>
