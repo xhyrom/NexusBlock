@@ -56,7 +56,15 @@ public class Nexus {
     }
 
     private void onDestroy(Player player) {
-        location.getWorld().createExplosion(location, 1F, false, false);
+        String version = Bukkit.getServer().getClass().getPackage().getName();
+        version = version.substring(version.lastIndexOf('.') + 1);
+
+        if(version.contains("v1_17")) {
+            location.getWorld().createExplosion(location, 1F, false, false);
+        } else {
+            Bukkit.getLogger().warning("[NexusBlock] Can't create explosion.");
+        }
+
         location.getWorld().strikeLightningEffect(location);
 
         Block block = location.getBlock();
