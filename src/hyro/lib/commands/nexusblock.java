@@ -58,6 +58,7 @@ public class nexusblock implements CommandExecutor {
         if(args[0].equalsIgnoreCase("create")) {
             if(args.length < 5) {
                 Message.sendMessage(p, "Please provide material, location x y z.");
+                return true;
             }
 
             String material = args[1];
