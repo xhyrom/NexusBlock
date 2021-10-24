@@ -5,6 +5,8 @@
 An easy way to make your own **"Block Nexus"** on your economy minecraft server!  
 In "Releases" you can download the plugin.
 
+Required [HolographicDisplays](https://ci.codemc.io/job/filoghost/job/HolographicDisplays/) or [DecentHolograms](https://www.spigotmc.org/resources/decent-holograms-placeholderapi-support-no-dependencies.96927/)
+
 <a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://raw.githubusercontent.com/xHyroM/NexusBlock/main/readme/nexusjesus.png" height="108" width="750"></a>  
 
     

@@ -1,7 +1,5 @@
 package hyro.lib.structures;
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram;
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import hyro.lib.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -22,7 +20,7 @@ public class Nexus {
     public String respawn;
     public Location location;
     public List<String> rewards;
-    public Hologram hologram;
+    public Object hologram;
 
     public Nexus(Material type, String name, String info, String maxHealth, String healthBar, Integer health, String respawn, Location location, List<String> rewards) {
         this.type = type;
@@ -33,7 +31,7 @@ public class Nexus {
         this.respawn = respawn;
         this.location = location;
         this.rewards = rewards;
-        this.hologram = HologramsAPI.createHologram(Main.instance, this.location.getWorld().getBlockAt(location).getLocation().add(0.5, 3.0, 0.5));
+        this.hologram = Main.HologramManager.createHologram(this.location.getWorld().getBlockAt(location).getLocation().add(0.5, 3.0, 0.5));
         this.health = health;
 
         updateHologram(true);
@@ -48,13 +46,12 @@ public class Nexus {
 
     private void updateHologram(Boolean first) {
         if(first) {
-            hologram.insertItemLine(0, new ItemStack(type));
-            hologram.insertTextLine(1, name);
-            hologram.insertTextLine(2, healthBar.replace("{health}", health.toString()).replace("{maxHealth}", maxHealth));
-            hologram.insertTextLine(3, info);
+            Main.HologramManager.insertItemLine(hologram, 0, new ItemStack(type));
+            Main.HologramManager.insertTextLine(hologram, 1, name);
+            Main.HologramManager.insertTextLine(hologram, 2, healthBar.replace("{health}", health.toString()).replace("{maxHealth}", maxHealth));
+            Main.HologramManager.insertTextLine(hologram, 3, info);
         } else {
-            hologram.removeLine(2);
-            hologram.insertTextLine(2, healthBar.replace("{health}", health.toString()).replace("{maxHealth}", maxHealth));
+            Main.HologramManager.editTextLine(hologram, 2, healthBar.replace("{health}", health.toString()).replace("{maxHealth}", maxHealth), false);
         }
     }
 

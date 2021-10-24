@@ -17,4 +17,14 @@ public class Utils {
 
         return new Location(world, x, y, z, yaw, pitch);
     }
+
+    public static String getDependency() {
+        if(Bukkit.getServer().getPluginManager().getPlugin("HolographicDisplays") != null) {
+            return "hd";
+        } else if(Bukkit.getServer().getPluginManager().getPlugin("DecentHolograms") != null) {
+            return "dh";
+        }
+
+        return null;
+    }
 }

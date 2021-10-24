@@ -1,14 +1,17 @@
 package hyro.lib;
 
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import hyro.lib.commands.nexusblock;
 import hyro.lib.listeners.BlockDestroy;
 import hyro.lib.structures.Nexus;
+import hyro.lib.utils.Holograms.DecentHolograms;
+import hyro.lib.utils.Holograms.GlobalInterface;
+import hyro.lib.utils.Holograms.HolographicDisplays;
+import hyro.lib.utils.Message;
 import hyro.lib.utils.TabComplete;
+import hyro.lib.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -28,15 +31,38 @@ public class Main extends JavaPlugin {
     public static File file;
     public static Plugin instance;
     public static FileConfiguration fileConfig;
+    public static GlobalInterface HologramManager;
     public static HashMap<String, Nexus> nexuses = new HashMap<String, Nexus>();
 
     @Override
     public void onEnable() {
-        HologramsAPI.getHolograms(this).forEach((hologram) -> {
-            hologram.delete();
-        });
-
         instance = this;
+
+        String dependency = Utils.getDependency();
+        if(dependency == null) {
+            getLogger().warning("§cRequired HolographicDisplays or DecentHolograms!");
+            Bukkit.getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        if(dependency.equalsIgnoreCase("hd")) HologramManager = new HolographicDisplays();
+        else {
+            HologramManager = new DecentHolograms();
+
+            // Because DecentHolograms ._.
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                @Override
+                public void run()
+                {
+                    try {
+                        Main.fileConfig.load(Main.file);
+                        Main.reloadPlugin();
+                    } catch (Exception e) {
+                        Main.reloadPlugin();
+                    }
+                }
+            });
+        }
 
         saveDefaultConfig();
         createConfig();
@@ -53,7 +79,7 @@ public class Main extends JavaPlugin {
         getLogger().info("§cNexusBlock by Hyro has been disabled §8(§c0.1.0§8)");
 
         nexuses.forEach((material, nexus) -> {
-            nexus.hologram.delete();
+            Main.HologramManager.deleteHologram(nexus.hologram);
             try {
                 fileConfig.load(file);
 
@@ -112,6 +138,7 @@ public class Main extends JavaPlugin {
 
             if(material == Material.BEDROCK) location.getWorld().getBlockAt(location).setType(material);
 
+            Bukkit.getLogger().info("[NexusBlock] Loaded " + block + " nexus!");
             nexuses.put(block, new Nexus(
                     material, name, info, maxHealth, healthBar, health, respawn, location, rewards
             ));
@@ -121,7 +148,7 @@ public class Main extends JavaPlugin {
     public static void reloadPlugin() {
         nexuses.forEach((material, nexus) -> {
             nexuses.remove(material);
-            nexus.hologram.delete();
+            Main.HologramManager.deleteHologram(nexus.hologram);
             try {
                 fileConfig.load(file);
 

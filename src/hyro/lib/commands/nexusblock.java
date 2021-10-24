@@ -18,6 +18,7 @@ public class nexusblock implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if(!(commandSender instanceof Player)) {
             Message.sendConsole("Only player can use this command.");
+            return true;
         }
 
         Player p = (Player) commandSender;
