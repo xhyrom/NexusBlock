@@ -1,7 +1,7 @@
 name: NexusBlock
 description: Just destroy the block
 main: hyro.lib.Main
-version: 0.2.2
+version: 0.2.2-DEV
 api-version: 1.13
 author: Hyro
 softdepend:
