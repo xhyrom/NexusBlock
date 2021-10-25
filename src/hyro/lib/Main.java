@@ -4,6 +4,7 @@ import hyro.lib.commands.nexusblock;
 import hyro.lib.listeners.BlockDestroy;
 import hyro.lib.structures.Nexus;
 import hyro.lib.utils.Holograms.*;
+import hyro.lib.utils.Metrics;
 import hyro.lib.utils.TabComplete;
 import hyro.lib.utils.Utils;
 import org.bukkit.Bukkit;
@@ -67,6 +68,8 @@ public class Main extends JavaPlugin {
         createConfig();
 
         getLogger().info("§cNexusBlock by Hyro has been §aenabled!");
+
+        Metrics metrics = new Metrics(this, 13145);
 
         loadBlocks();
         loadCommands();
