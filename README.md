@@ -17,6 +17,7 @@
 ### Supported Plugins: 
 [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays)<br> 
 [Decent Holograms](https://www.spigotmc.org/resources/decent-holograms-placeholderapi-support-no-dependencies.96927/)<br> 
+[SainttX Holograms](https://www.spigotmc.org/resources/holograms.4924/)<br> 
 [CMI Holograms](https://www.zrips.net/cmi/holograms/)<br> 
 
 <br> 
