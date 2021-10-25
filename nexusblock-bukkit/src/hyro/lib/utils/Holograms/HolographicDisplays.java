@@ -8,6 +8,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class HolographicDisplays implements GlobalInterface {
     public Object createHologram(Location location) {
+        location = location.add(0.5, 3.0, 0.5);
+
         Hologram hd = HologramsAPI.createHologram(Main.instance, location);
         return hd;
     }

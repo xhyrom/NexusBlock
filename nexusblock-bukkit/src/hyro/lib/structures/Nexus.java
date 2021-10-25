@@ -34,7 +34,7 @@ public class Nexus {
         this.location = location;
         this.rewards = rewards;
         this.rewardsEveryBreak = Utils.percentageItems(rewardsEveryBreak);
-        this.hologram = Main.HologramManager.createHologram(this.location.getWorld().getBlockAt(location).getLocation().add(0.5, 3.0, 0.5));
+        this.hologram = Main.HologramManager.createHologram(this.location.getWorld().getBlockAt(location).getLocation());
         this.health = health;
 
         updateHologram(true);

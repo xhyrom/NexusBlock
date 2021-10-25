@@ -19,6 +19,8 @@ public class SainttXHolograms implements GlobalInterface {
     }
 
     public Object createHologram(Location location) {
+        location = location.add(0.5, 3.0, 0.5);
+        
         Hologram hd = new Hologram(Utils.getRandomString(5), location);
         hd.spawn();
         hologramManager.addActiveHologram(hd);
