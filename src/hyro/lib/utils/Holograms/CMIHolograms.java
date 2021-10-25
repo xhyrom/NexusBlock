@@ -1,15 +1,18 @@
 package hyro.lib.utils.Holograms;
 
-import com.Zrips.CMI.Containers.CMILocation;
+import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Modules.Holograms.CMIHologram;
 import hyro.lib.utils.Utils;
+import net.Zrips.CMILib.Container.CMILocation;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
 public class CMIHolograms implements GlobalInterface {
     public Object createHologram(Location location) {
-        CMILocation cmiloc = new CMILocation(location);
-        CMIHologram hologram = new CMIHologram(Utils.getRandomString(5), cmiloc);
+        CMILocation cmiLocation = new CMILocation(location);
+        CMIHologram hologram = new CMIHologram(Utils.getRandomString(5), cmiLocation);
+
+        CMI.getInstance().getHologramManager().addHologram(hologram);
         return hologram;
     }
 

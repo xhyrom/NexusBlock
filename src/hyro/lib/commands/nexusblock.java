@@ -105,6 +105,7 @@ public class nexusblock implements CommandExecutor {
                 return true;
             }
 
+            Main.HologramManager.deleteHologram(nexus.hologram);
             Main.nexuses.remove(args[1]);
             Main.fileConfig.set("nexuses."+args[1], null);
 

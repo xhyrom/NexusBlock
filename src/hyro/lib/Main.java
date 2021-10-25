@@ -3,11 +3,7 @@ package hyro.lib;
 import hyro.lib.commands.nexusblock;
 import hyro.lib.listeners.BlockDestroy;
 import hyro.lib.structures.Nexus;
-import hyro.lib.utils.Holograms.CMIHolograms;
-import hyro.lib.utils.Holograms.DecentHolograms;
-import hyro.lib.utils.Holograms.GlobalInterface;
-import hyro.lib.utils.Holograms.HolographicDisplays;
-import hyro.lib.utils.Message;
+import hyro.lib.utils.Holograms.*;
 import hyro.lib.utils.TabComplete;
 import hyro.lib.utils.Utils;
 import org.bukkit.Bukkit;
@@ -41,12 +37,14 @@ public class Main extends JavaPlugin {
 
         String dependency = Utils.getDependency();
         if(dependency == null) {
-            getLogger().warning("§cRequired HolographicDisplays or DecentHolograms!");
+            getLogger().warning("§cRequire HolographicDisplays/DecentHolograms/SaintXHolograms or CMIHolograms!");
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
         if(dependency.equalsIgnoreCase("hd")) HologramManager = new HolographicDisplays();
+        else if(dependency.equalsIgnoreCase("cmihd")) HologramManager = new CMIHolograms();
+        else if(dependency.equalsIgnoreCase("saintxhd")) HologramManager = new SainttXHolograms();
         else if(dependency.equalsIgnoreCase("dh")) {
             HologramManager = new DecentHolograms();
 
@@ -64,14 +62,11 @@ public class Main extends JavaPlugin {
                 }
             });
         }
-        else if(dependency.equalsIgnoreCase("cmihd")) {
-            HologramManager = new CMIHolograms();
-        }
 
         saveDefaultConfig();
         createConfig();
 
-        getLogger().info("§cNexusBlock by Hyro has been §aenabled §8(§c0.1.0§8)");
+        getLogger().info("§cNexusBlock by Hyro has been §aenabled!");
 
         loadBlocks();
         loadCommands();
@@ -80,7 +75,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("§cNexusBlock by Hyro has been disabled §8(§c0.1.0§8)");
+        getLogger().info("§cNexusBlock by Hyro has been disabled!");
 
         nexuses.forEach((material, nexus) -> {
             Main.HologramManager.deleteHologram(nexus.hologram);

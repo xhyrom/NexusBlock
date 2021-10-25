@@ -64,6 +64,8 @@ public class Utils {
             return "hd";
         } else if(Bukkit.getServer().getPluginManager().getPlugin("DecentHolograms") != null) {
             return "dh";
+        } else if(Bukkit.getServer().getPluginManager().getPlugin("Holograms") != null) {
+            return "saintxhd";
         } else if(Bukkit.getServer().getPluginManager().getPlugin("CMI") != null) {
             return "cmihd";
         }
