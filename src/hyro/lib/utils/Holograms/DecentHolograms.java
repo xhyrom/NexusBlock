@@ -5,6 +5,7 @@ import eu.decentsoftware.holograms.api.holograms.Hologram;
 import eu.decentsoftware.holograms.api.holograms.HologramLine;;
 import eu.decentsoftware.holograms.core.holograms.DefaultHologram;
 import eu.decentsoftware.holograms.core.holograms.DefaultHologramLine;
+import hyro.lib.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,7 +20,7 @@ public class DecentHolograms implements GlobalInterface {
     }
 
     public Object createHologram(Location location) {
-        Hologram hd = new DefaultHologram(getRandomString(5), location);
+        Hologram hd = new DefaultHologram(Utils.getRandomString(5), location);
         hd.show();
         hd.save();
 
@@ -61,43 +62,5 @@ public class DecentHolograms implements GlobalInterface {
 
         dh.getHologramManager().removeHologram(name);
         return;
-    }
-
-    private String getRandomString(int i)
-    {
-
-        // bind the length
-        byte[] bytearray;
-        bytearray = new byte[256];
-        String mystring;
-        StringBuffer thebuffer;
-        String theAlphaNumericS;
-
-        new Random().nextBytes(bytearray);
-
-        mystring
-                = new String(bytearray, Charset.forName("UTF-8"));
-
-        thebuffer = new StringBuffer();
-
-        theAlphaNumericS
-                = mystring
-                .replaceAll("[^A-Z0-9]", "");
-
-        //random selection
-        for (int m = 0; m < theAlphaNumericS.length(); m++) {
-
-            if (Character.isLetter(theAlphaNumericS.charAt(m))
-                    && (i > 0)
-                    || Character.isDigit(theAlphaNumericS.charAt(m))
-                    && (i > 0)) {
-
-                thebuffer.append(theAlphaNumericS.charAt(m));
-                i--;
-            }
-        }
-
-        // the resulting string
-        return thebuffer.toString();
     }
 }

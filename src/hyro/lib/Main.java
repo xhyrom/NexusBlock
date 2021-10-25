@@ -3,6 +3,7 @@ package hyro.lib;
 import hyro.lib.commands.nexusblock;
 import hyro.lib.listeners.BlockDestroy;
 import hyro.lib.structures.Nexus;
+import hyro.lib.utils.Holograms.CMIHolograms;
 import hyro.lib.utils.Holograms.DecentHolograms;
 import hyro.lib.utils.Holograms.GlobalInterface;
 import hyro.lib.utils.Holograms.HolographicDisplays;
@@ -46,7 +47,7 @@ public class Main extends JavaPlugin {
         }
 
         if(dependency.equalsIgnoreCase("hd")) HologramManager = new HolographicDisplays();
-        else {
+        else if(dependency.equalsIgnoreCase("dh")) {
             HologramManager = new DecentHolograms();
 
             // Because DecentHolograms ._.
@@ -62,6 +63,9 @@ public class Main extends JavaPlugin {
                     }
                 }
             });
+        }
+        else if(dependency.equalsIgnoreCase("cmihd")) {
+            HologramManager = new CMIHolograms();
         }
 
         saveDefaultConfig();
