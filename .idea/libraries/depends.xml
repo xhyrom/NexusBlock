@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="depends">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/depends" />
+      <root url="file://$PROJECT_DIR$/nexusblock-bukkit/depends" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/depends" />
+      <root url="file://$PROJECT_DIR$/nexusblock-bukkit/depends" />
     </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/depends" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/depends" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/nexusblock-bukkit/depends" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/nexusblock-bukkit/depends" recursive="false" type="SOURCES" />
   </library>
 </component>

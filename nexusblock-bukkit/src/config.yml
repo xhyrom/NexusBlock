@@ -22,6 +22,11 @@ nexuses:
       pitch: 0.0
       world: "world"
 
+    # Rewards every break, command;percentage% (remove if you don't want)
+    rewardsEveryBreak:
+      - "eco give {player} 100;5%"
+      - "none;95%"
+
     # Rewards after destroy
     rewards:
       - "say {player} win!"
