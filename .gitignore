@@ -1,2 +1,4 @@
 depends/
+nexusblock-bukkit/depends/
+nexusblock-nukkit/depends/
 .idea/

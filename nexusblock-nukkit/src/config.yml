@@ -1,7 +1,7 @@
 prefix: "&8[&cNexusBlock&8] &7"
 nexuses:
   DIAMOND_BLOCK:
-    blockId: 57
+    blockId: 57 # REQUIRED!!!!
 
     name: "&b&lDIAMOND NEXUS"
     info: "Destory to get reward"

@@ -48,7 +48,7 @@ public class Nexus {
         else if(rewardsEveryBreak.length != 0) {
             String command = Utils.randomItem(rewardsEveryBreak);
             if(!command.equalsIgnoreCase("none")) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("{player}", player.getName()));
             }
         }
     }

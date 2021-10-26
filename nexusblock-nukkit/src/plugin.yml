@@ -1,0 +1,8 @@
+name: NexusBlock
+description: Just destroy the block
+main: hyro.lib.Main
+version: 0.2.3-DEV
+api: ["1.0.0"]
+author: Hyro
+softdepend:
+  - Holograms

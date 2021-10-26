@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/nexusblock-bukkit/nexusblock-bukkit.iml" filepath="$PROJECT_DIR$/nexusblock-bukkit/nexusblock-bukkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nexusblock-nukkit/nexusblock-nukkit.iml" filepath="$PROJECT_DIR$/nexusblock-nukkit/nexusblock-nukkit.iml" />
       <module fileurl="file://$PROJECT_DIR$/nexusblock-sponge/nexusblock-sponge.iml" filepath="$PROJECT_DIR$/nexusblock-sponge/nexusblock-sponge.iml" />
     </modules>
   </component>
