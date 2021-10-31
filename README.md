@@ -24,9 +24,9 @@
 <br>   
 <br> 
 <br>    
-<a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://i.imgur.com/DavZ5kb.png"></a>
+<a href="https://github.com/xHyroM/NexusBlock"><img src="https://i.imgur.com/DavZ5kb.png"></a>
 <a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://i.imgur.com/y0H16Ir.png"></a> 
-<a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://i.imgur.com/Uv6Pm0i.png"></a> 
+<a href="https://ko-fi.com/garlicteam"><img src="https://i.imgur.com/Uv6Pm0i.png"></a> 
 <br> 
 <br> 
 <br> 
