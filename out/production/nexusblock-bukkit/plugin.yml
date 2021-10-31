@@ -5,13 +5,11 @@ version: 0.2.3-DEV
 api-version: 1.13
 author: Hyro
 softdepend:
-  # Holograms
   - HolographicDisplays
   - DecentHolograms
   - Holograms
   - CMI
-
-  # MultiWorld
+  - CMILib
   - Multiverse-Core
   - MultiWorld
 

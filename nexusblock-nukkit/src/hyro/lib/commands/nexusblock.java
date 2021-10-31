@@ -63,7 +63,7 @@ public class nexusblock extends Command {
                 return true;
             }
 
-            String material = args[1];
+            String material = args[1].toUpperCase();
             String x = args[2];
             String y = args[3];
             String z = args[4];
