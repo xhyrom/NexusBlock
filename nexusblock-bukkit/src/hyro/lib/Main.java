@@ -142,7 +142,7 @@ public class Main extends JavaPlugin {
             List<String> rewardsEveryBreak = new ArrayList<>();
             if(fileConfig.get(path+".rewardsEveryBreak") != null) rewardsEveryBreak = fileConfig.getStringList(path+".rewardsEveryBreak");
 
-            if(material == Material.BEDROCK) location.getWorld().getBlockAt(location).setType(material);
+            if(location.getBlock().getType() == Material.BEDROCK) location.getWorld().getBlockAt(location).setType(material);
 
             Bukkit.getLogger().info("[NexusBlock] Loaded " + block + " nexus!");
             nexuses.put(block, new Nexus(
