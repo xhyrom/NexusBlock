@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class CMIHolograms implements GlobalInterface {
     public Object createHologram(Location location) {
-        location = location.add(0.5, 1.0, 0.5);
+        location = location.add(0.5, 3.0, 0.5);
 
         CMILocation cmiLocation = new CMILocation(location);
         CMIHologram hologram = new CMIHologram(Utils.getRandomString(5), cmiLocation);
