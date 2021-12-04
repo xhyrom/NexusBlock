@@ -45,24 +45,8 @@ public class Main extends JavaPlugin {
         }
 
         if(dependency.equalsIgnoreCase("cmihd")) HologramManager = new CMIHolograms();
+        else if(dependency.equalsIgnoreCase("dh")) HologramManager = new DecentHolograms();
         else if(dependency.equalsIgnoreCase("hd")) HologramManager = new HolographicDisplays();
-        else if(dependency.equalsIgnoreCase("dh")) {
-            HologramManager = new DecentHolograms();
-
-            // Because DecentHolograms ._.
-            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-                @Override
-                public void run()
-                {
-                    try {
-                        Main.fileConfig.load(Main.file);
-                        Main.reloadPlugin();
-                    } catch (Exception e) {
-                        Main.reloadPlugin();
-                    }
-                }
-            });
-        }
         else if(dependency.equalsIgnoreCase("saintxhd")) HologramManager = new SainttXHolograms();
 
         saveDefaultConfig();
