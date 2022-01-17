@@ -44,10 +44,10 @@ public class Main extends JavaPlugin {
             return;
         }
 
-        if(dependency.equalsIgnoreCase("cmihd")) HologramManager = new CMIHolograms();
-        else if(dependency.equalsIgnoreCase("dh")) HologramManager = new DecentHolograms();
+        if(dependency.equalsIgnoreCase("dh")) HologramManager = new DecentHolograms();
         else if(dependency.equalsIgnoreCase("hd")) HologramManager = new HolographicDisplays();
         else if(dependency.equalsIgnoreCase("saintxhd")) HologramManager = new SainttXHolograms();
+        else if(dependency.equalsIgnoreCase("cmihd")) HologramManager = new CMIHolograms();
 
         saveDefaultConfig();
         createConfig();

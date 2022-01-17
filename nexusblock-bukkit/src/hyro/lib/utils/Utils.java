@@ -26,8 +26,6 @@ public class Utils {
 
     public static String getRandomString(int i)
     {
-
-        // bind the length
         byte[] bytearray;
         bytearray = new byte[256];
         String mystring;
@@ -45,7 +43,6 @@ public class Utils {
                 = mystring
                 .replaceAll("[^A-Z0-9]", "");
 
-        //random selection
         for (int m = 0; m < theAlphaNumericS.length(); m++) {
 
             if (Character.isLetter(theAlphaNumericS.charAt(m))
@@ -58,7 +55,6 @@ public class Utils {
             }
         }
 
-        // the resulting string
         return thebuffer.toString();
     }
 

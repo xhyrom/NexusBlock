@@ -16,24 +16,21 @@ import java.util.List;
 public class nexusblock implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-        if(!(commandSender instanceof Player)) {
-            Message.sendConsole("Only player can use this command.");
-            return true;
-        }
-
         Player p = (Player) commandSender;
-        if((args.length == 0 || args[0].equalsIgnoreCase("info")) && !p.hasPermission("nexusblock.admin")) {
+        Boolean hasPermission = commandSender == null || p.hasPermission("nexusblock.admin");
+
+        if((args.length == 0 || args[0].equalsIgnoreCase("info")) && !hasPermission) {
             Message.sendMessage(p, "Plugin by &c&nxHyroM#2851 &7available on github &c&nhttps://github.com/xHyroM/NexusBlock");
             return true;
         }
 
-        if((args.length == 0 || args[0].equalsIgnoreCase("info")) && p.hasPermission("nexusblock.admin")) {
+        if((args.length == 0 || args[0].equalsIgnoreCase("info")) && hasPermission) {
             Message.sendMessage(p, "Plugin by &c&nxHyroM#2851 &7available on github &c&nhttps://github.com/xHyroM/NexusBlock");
             Message.sendMessageNoPrefix(p, "\n&c&nAdmin Commands:\n\n&c/nexusblock reload &8- &7Reload plugin\n&c/nexusblock create\n&c/nexusblock remove");
             return true;
         }
 
-        if(!p.hasPermission("nexusblock.admin")) {
+        if(!hasPermission) {
             Message.sendMessage(p, "&cYou don't have permissions!");
             return true;
         }

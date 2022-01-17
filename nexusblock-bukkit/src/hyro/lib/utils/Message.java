@@ -12,7 +12,9 @@ public class Message {
 
     public static void sendMessage(Player p, String message) {
         String prefix = Main.fileConfig.getString("prefix").replaceAll("&","§");
-        p.sendMessage(prefix + message.replaceAll("&","§"));
+
+        if (p != null) p.sendMessage(prefix + message.replaceAll("&","§"));
+        else sendConsole(prefix + message.replaceAll("&", "§"));
     }
 
     public static void sendMessageNoPrefix(Player p, String message) {
