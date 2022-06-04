@@ -1,0 +1,17 @@
+name: NexusBlock
+version: '${project.version}'
+main: xhyrom.nexusblock.NexusBlock
+api-version: 1.18
+authors: [ xHyroM ]
+softdepend:
+  - HolographicDisplays
+  - DecentHolograms
+  - Holograms
+  - CMI
+  - CMILib
+
+commands:
+  nexusblock:
+    description: Setup blocks or check informations
+    aliases:
+      - blocknexus

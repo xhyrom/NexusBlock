@@ -1,0 +1,49 @@
+prefix: "&8[&cNexusBlock&8] &7"
+nexuses:
+  - id: 1
+    material: DIAMOND_BLOCK
+    hologram:
+      main:
+        - "{BLOCK:MATERIAL}"
+        - "&b&lDIAMOND NEXUS"
+        - "Destroy to get reward"
+        - ""
+        - "{hologram:positions}"
+        - ""
+        - "&c{health}&8/&c{maximumHealth}"
+      positions:
+        - "&a➀ &7{playerName} &8| &7{count}"
+        - "&2➁ &7{playerName} &8| &7{count}"
+        - "&c➂ &7{playerName} &8| &7{count}"
+
+    # Position of nexus
+    location:
+      x: 10.0
+      y: 50.0
+      z: 10.0
+      world: "world"
+
+    #  Position of hologram (only y)
+    hologramLocation: 54.0
+
+    # Respawn nexus after destroy (in seconds)
+    respawn: 10
+
+    healths:
+      # Number of destructions (Don't change)
+      health: 0
+      maximumHealth: 100
+
+    rewards:
+      # First player (top 1)
+      1:
+        - "give {playerName} apple"
+        - "say {playerName} {destroys} 1."
+      # Second player (top 2)
+      2:
+        - "give {playerName} book"
+        - "say {playerName} {destroys} 2."
+      # Player that destroy block
+      -1:
+        - "give {playerName} golden_apple"
+        - "say {playerName} {destroys} destroyed block!!"
