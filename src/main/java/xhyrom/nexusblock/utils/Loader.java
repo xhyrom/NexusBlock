@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import xhyrom.nexusblock.NexusBlock;
 import xhyrom.nexusblock.structures.Nexus;
+import xhyrom.nexusblock.structures.holograms.CMIHolograms;
+import xhyrom.nexusblock.structures.holograms.HolographicDisplays;
 import xhyrom.nexusblock.structures.nexusConfig.NexusConfig;
 import xhyrom.nexusblock.structures.holograms.DecentHolograms;
 import xhyrom.nexusblock.structures.holograms.HologramInterface;
@@ -34,6 +36,8 @@ public class Loader {
 
     public static HologramInterface loadHologram() {
         if (checkDependency("DecentHolograms")) return new DecentHolograms();
+        else if (checkDependency("HolographicDisplays")) return new HolographicDisplays();
+        else if (checkDependency("CMI")) return new CMIHolograms();
         else return null;
     }
 
