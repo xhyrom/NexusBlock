@@ -31,6 +31,15 @@ public final class NexusBlock extends JavaPlugin {
         // Plugin shutdown logic
     }
 
+    public void onReload() {
+        for (Nexus nexus : this.nexuses) {
+            this.nexuses.remove(nexus);
+            this.hologram.deleteHologram(nexus.hologramInterface);
+        }
+
+        nexuses = Loader.loadBlocks();
+    }
+
     public static NexusBlock getInstance() {
         return Instance;
     }

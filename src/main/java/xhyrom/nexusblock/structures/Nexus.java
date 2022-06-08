@@ -23,7 +23,7 @@ public class Nexus {
     private World world;
     public Location location;
     private NexusConfigHologram hologram;
-    private Object hologramInterface;
+    public Object hologramInterface;
     private Long respawn;
     private NexusConfigHealths healths;
     private NexusConfigRewards rewards;
@@ -64,7 +64,7 @@ public class Nexus {
             onDestroy(player);
     }
 
-    public static class ModuleComparator implements Comparator<String> {
+    private static class ModuleComparator implements Comparator<String> {
         @Override
         public int compare(String arg0, String arg1) {
             int destroys1 = Nexus.destroys.get(arg0);
