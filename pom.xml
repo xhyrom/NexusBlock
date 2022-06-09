@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Nexusblock</name>
+    <name>NexusBlock</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -17,6 +17,7 @@
     </properties>
 
     <build>
+        <finalName>NexusBlock</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
