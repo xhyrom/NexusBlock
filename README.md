@@ -4,12 +4,12 @@
 <a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://i.imgur.com/qNXOIAU.png"></a>
 <a href="https://www.spigotmc.org/resources/nexusblock.97041/"><img src="https://i.imgur.com/Gl98hwp.png"></a>
 
+> ### WARNING  
+> NexusBlock 1.x.x is not compatible with older versions!
 
 ### Commands:
 `/nexusblock`, `/blocknexus` - Main command.  
-`/nexusblock reload` - Reload the plugin.  
-`/nexusblock create` - Create the nexus.  
-`/nexusblock remove` - Remove the nexus.  
+`/nexusblock reload` - Reload the plugin.
 
 <br>
 <br>

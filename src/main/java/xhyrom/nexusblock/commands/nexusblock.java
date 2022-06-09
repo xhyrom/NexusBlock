@@ -17,7 +17,7 @@ public class nexusblock implements CommandExecutor {
         }
 
         if (args.length == 0 || args[0].equalsIgnoreCase("info")) {
-            sender.sendMessage(message(infoMessage + "\n&cAdmin Commands:\n\n&c/nexusblock reload &8- &7Reload plugin\n&c/nexusblock create &8- &7Create new nexus"));
+            sender.sendMessage(message(infoMessage + "\n&cAdmin Commands:\n\n&c/nexusblock reload &8- &7Reload plugin"));
             return true;
         }
 
