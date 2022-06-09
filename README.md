@@ -6,10 +6,10 @@
 
 
 ### Commands:
-`/nexusblock`, `/blocknexus` - Main command.
-`/nexusblock reload` - Reload the plugin.
-`/nexusblock create` - Create the nexus.
-`/nexusblock remove` - Remove the nexus.
+`/nexusblock`, `/blocknexus` - Main command.  
+`/nexusblock reload` - Reload the plugin.  
+`/nexusblock create` - Create the nexus.  
+`/nexusblock remove` - Remove the nexus.  
 
 <br>
 <br>
