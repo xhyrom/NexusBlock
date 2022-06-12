@@ -1,5 +1,5 @@
 prefix: "&8[&cNexusBlock&8] &7"
-statistics: true
+send-metrics: true
 nexuses:
   - id: 1
     material: DIAMOND_BLOCK

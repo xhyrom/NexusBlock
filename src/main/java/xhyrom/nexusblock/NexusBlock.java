@@ -21,7 +21,8 @@ public final class NexusBlock extends JavaPlugin {
         Instance = this;
 
         this.saveDefaultConfig();
-        new Metrics(this, 13145);
+        if (config.getBoolean("send-metrics"))
+            new Metrics(this, 13145);
 
         hologram = Loader.loadHologram();
         nexuses = Loader.loadBlocks();
