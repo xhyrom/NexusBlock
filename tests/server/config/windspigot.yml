@@ -1,0 +1,290 @@
+# This is the main configuration file for WindSpigot.
+# As you can see, there's tons to configure. Some options may impact gameplay, so use
+# with caution, and make sure you know what each option does before configuring.
+# 
+# If you need help with the configuration or have any questions related to WindSpigot,
+# join us in our Discord.
+# 
+# Discord: https://discord.gg/kAbTsFkbmN
+# 
+
+
+# Configuration version, do NOT modify this!
+config-version: 28
+settings:
+  # Configuration for WindSpigot's commands
+  command:
+    ping:
+      # Enables the command "/ping <player>" which shows player ping. Users require the permission windspigot.command.ping
+      enable: true
+
+      # The message displayed for the /ping command
+      self-ping-msg: '&bYour ping: &3%ping%'
+
+      # The message displayed for the /ping <player> command
+      other-ping-msg: '&3%player%''s &bping: &3%ping%'
+
+    # Enables the command "/mobai" which toggles mob ai. Users require the permission windspigot.command.mobai
+    mob-ai: true
+
+    # Enables the /version command
+    version: true
+
+    # Enables the /plugins command
+    plugins: true
+
+    # Enables the /reload command (It is recommended to not use /reload)
+    reload: false
+
+  # Enables WindSpigot statistics. This allows developers to see how many WindSpigot servers are running. 
+  # This has no performance impact and is completely anonymous, but you can opt out of this if you want.
+  statistics: false
+
+  # Configuration for asynchronous things.
+  async:
+    # Configuration for async entity path searches
+    path-searches:
+      # Enables async path searching for entities.
+      enabled: true
+
+      # A list of entities that utilize async path searches. Removing entities from this list will ensure 100% vanilla behavior, but worse performance.
+      entities:
+      - BAT
+      - BLAZE
+      - CHICKEN
+      - COW
+      - CREEPER
+      - ENDERMAN
+      - HORSE
+      - IRON_GOLEM
+      - MAGMA_CUBE
+      - MUSHROOM_COW
+      - PIG
+      - PIG_ZOMBIE
+      - RABBIT
+      - SHEEP
+      - SKELETON
+      - SILVERFISH
+      - SLIME
+      - SNOWMAN
+      - SQUID
+      - WITCH
+      - ZOMBIE
+
+      # The mininum distance an entity is targeting to handle it async. Tune this based on how many entities your server will has.
+      distance-to-async: 0
+
+      # The threads used for path searches. Tune this based on how many entities your server will has.
+      threads: 4
+
+      # Ensures accuracy of async path searches, disabling this will result in possibly inaccurate targeting, but higher performance.
+      ensure-accuracy: true
+
+    # Configuration for the async entity tracker.
+    entity-tracking:
+      # Enables asynchronous entity tracking
+      enable: true
+
+      # The amount of threads used for async entity tracking, increase or decrease this based on your server load.
+      threads: 5
+
+    # Combat thread TPS for async knockback.
+    combat-thread-tps: 40
+
+    # Enables asynchronous knockback. This increases overall cpu usage, but sends knockback packets faster. Disable this if you do not run a pvp server. 
+    # This may be incompatible with a few plugins that listen to knockback packets. Test before using in production.
+    knockback: false
+
+    # Configuration for async explosions
+    explosions:
+      # Enables async explosion calculatons.
+      enable: true
+
+      # The threads used for async explosions
+      threads: 3
+
+  # This outputs information to developers in the console. There is no need to enable this.
+  debug-mode: false
+  anti-crash:
+    # Kicks players if they try to do an action that could crash the server.
+    enabled: true
+
+  # Configuration for ender pearls passing through certain blocks. (Credits to FlamePaper)
+  pearl-passthrough:
+    # Allows pearls to pass through fences.
+    fence-gate: false
+
+    # Allows pearls to pass through tripwires.
+    tripwire: false
+
+    # Allows pearls to pass through slabs.
+    slab: false
+
+    # Allows pearls to pass through beds.
+    bed: false
+
+    # Allows pearls to pass through cobwebs.
+    cobweb: false
+  event:
+    # Enables the entity explode event.
+    fire-entity-explode-event: true
+
+    # Enables the player move event.
+    fire-player-move-event: true
+
+    # Enables the leaf decay event.
+    fire-leaf-decay-event: true
+
+  # Disables delay of all interactions.
+  instant-interaction: false
+
+  # Disables decoding itemstacks when not needed.
+  stop-decoding-itemstack-on-place: true
+
+  # Enables a faster cannon entity tracker.
+  faster-cannon-tracker: true
+
+  # Enables lag compesation for thrown potions.
+  lag-compensated-potions: true
+
+  # Blocks enderpearl glitching.
+  anti-enderpearl-glitch: true
+
+  # Enable ProtocolLib network shim. This allows ProtocolLib to work, but requires extra memory. Disable this if you don't use ProtocolLib!
+  enable-protocollib-shim: true
+
+  # Kicks players if they try to do an illegal action (e.g. using a creative mode action while not in creative mode.)
+  kick-on-illegal-behavior: true
+
+  # Disable infinisleeper thread usage, only enable this if you know what are you doing.
+  disable-infinisleeper-thread-usage: false
+
+  # Toggles whether or not the server should save empty scoreboard teams
+  save-empty-scoreboard-teams: false
+
+  # Hides projectiles from hidden players.
+  hide-projectiles-from-hidden-players: false
+
+  # Threshold to disable mob spawning. This does not apply if limited mob spawns is not enabled. This option accepts decimals.
+  # Disables mob spawning if TPS is lower than the specified threshold.
+  limited-mob-spawns-threshold: 18.0
+
+  # Disables the fall animation for blocks.
+  disable-block-fall-animation: false
+  limited-mob-spawns: false
+
+  # Only switch to true if your OS is properly configured!! (See https://github.com/OpenHFT/Java-Thread-Affinity#isolcpus) 
+  # When properly configured on the OS this allocates an entire cpu core to the server, it improves performance but uses more cpu.
+  thread-affinity: false
+
+  # This sets the speed offset of splash potions, 0 is the default speed. Setting this higher makes potions splash faster. 
+  # This config option accepts decimals.
+  potion-speed-offset: 0.0
+
+  # This sets the delay between player attacks, 20 is the default. Setting this to 0 allows for no hit delay.
+  hit-delay: 20
+
+  # This enables keep alive handling from modern Minecraft. This may break some plugins.
+  modern-keep-alive: false
+
+  # Disabling this will prevent display of player ips in the console.
+  show-player-ips: true
+
+  # Controls the interval for the item-dirty check. Minecraft checks an item every tick to see if it was changed. This can be expensive because it also needs to check all NBT data. Spigot only checks for basic count/data/type data and does a deep check every 20 ticks by default.
+  item-dirty-ticks: 20
+  tcp-fast-open:
+    # Enables the TCP_FASTOPEN socket option.
+    enabled: true
+
+    # Options: 0 - Disabled.; 1 - TFO is enabled for outgoing connections (clients).; 2 - TFO is enabled for incoming connections (servers).; 3 - TFO is enabled for both clients and servers.
+    mode: 1
+
+  # Enables changing of weather.
+  weather-change: true
+
+  # Enables the TCP_NODELAY socket option.
+  use-tcp-nodelay: true
+
+  # Enables the ProtocolLib runtime patch (not required on ProtocolLib version 4.7+)
+  patch-protocollib: true
+
+  # Fixes the eating while running bug.
+  fix-eat-while-running: true
+
+  # Makes potion throwing smoother.
+  smooth-potting: true
+
+  # Changes the brand name of the server.
+  # This will show in statistics, server lists, client crashes,
+  #  and in the client debug screen. (accessed by pressing F3)
+  brand-name: WindSpigot
+
+  # Disables storage of operators, which deops all operators on server restarts
+  fast-operators: false
+
+  # Disables the firewall check when running BungeeCord
+  stop-notify-bungee: false
+  animation:
+    # Enables explosion animations.
+    tnt: true
+
+    # Enables mob spawner particles.
+    spawner: true
+  sound:
+    # Enables explosion sounds.
+    tnt: true
+
+  # Configuration for maximum entity tick time
+  max-tick-time:
+    # The maximum time that entities can take to tick before moving on. This may break some gameplay, so set to 1000 to disable. 
+    # For reference, there are 50 ms in a tick.
+    entity: 35
+
+    # The entity types that can be skipped when ticking. They will only be skipped if the server is lagging based on the set threshold. 
+    # Remove entities from this list if their vanilla behavior is absolutely needed on your server.
+    skippable-entities:
+    - BAT
+    - BLAZE
+    - CHICKEN
+    - COW
+    - CREEPER
+    - ENDERMAN
+    - HORSE
+    - IRON_GOLEM
+    - MAGMA_CUBE
+    - MUSHROOM_COW
+    - PIG
+    - PIG_ZOMBIE
+    - RABBIT
+    - SHEEP
+    - SKELETON
+    - SILVERFISH
+    - SLIME
+    - SNOWMAN
+    - SQUID
+    - WITCH
+    - ZOMBIE
+
+    # If the server should stop mob spawns when there are too many mobs to handle and some have to be skipped.
+    limit-on-overload: false
+
+  # Enables the usage of an improved hit registration based on lag compensation and small other details. (Credits to NachoSpigot and the original plugin)
+  improved-hit-detection: true
+  max-reach:
+    # The maximum reach a player can use, hits farther than this will be cancelled. Players can reach 6 blocks by default.
+    value: 6.0
+
+    # If creative players are immune to this reach cap
+    creative-bypass: true
+
+  # Enables the built-in anti malware feature
+  anti-malware: true
+
+  # Optimizes redstone wires.
+  panda-wire: true
+  chunk:
+    # The amount of threads used for chunks.
+    threads: 2
+
+    # The amount of players for each thread.
+    players-per-thread: 50

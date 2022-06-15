@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import xhyrom.nexusblock.NexusBlock;
 import xhyrom.nexusblock.structures.Nexus;
+import xhyrom.nexusblock.structures.database.Data;
 import xhyrom.nexusblock.structures.holograms.CMIHolograms;
 import xhyrom.nexusblock.structures.holograms.HolographicDisplays;
 import xhyrom.nexusblock.structures.nexusConfig.NexusConfig;
@@ -13,6 +14,7 @@ import xhyrom.nexusblock.structures.holograms.HologramInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Loader {
     public static List<Nexus> loadBlocks() {
@@ -28,7 +30,24 @@ public class Loader {
                 continue;
             }
 
-            nexuses.add(new Nexus(nexusConfig.id, material, nexusConfig.hologram, nexusConfig.location, nexusConfig.respawn, nexusConfig.healths, nexusConfig.hologramLocation, nexusConfig.rewards));
+            Data dataFromDatabase = NexusBlock.getInstance().jsonDatabase.data.get(nexusConfig.id);
+            if (dataFromDatabase == null) dataFromDatabase = new Data(new CopyOnWriteArrayList<>(), new HashMap<String, Integer>(), 0);
+
+            nexuses.add(
+                    new Nexus(
+                            nexusConfig.id,
+                            material,
+                            nexusConfig.hologram,
+                            nexusConfig.location,
+                            nexusConfig.respawn,
+                            nexusConfig.healths,
+                            nexusConfig.hologramLocation,
+                            nexusConfig.rewards,
+                            dataFromDatabase.destroyers,
+                            dataFromDatabase.destroys,
+                            dataFromDatabase.damaged
+                    )
+            );
         }
 
         return nexuses;

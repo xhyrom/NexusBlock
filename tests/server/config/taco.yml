@@ -1,0 +1,26 @@
+# This is the main configuration file for TacoSpigot.
+# As you can see, there's tons to configure. Some options may impact gameplay, so use
+# with caution, and make sure you know what each option does before configuring.
+# 
+# If you need help with the configuration or have any questions related to TacoSpigot,
+# join us at the IRC.
+# 
+# IRC: #taco @ irc.spi.gt ( http://irc.spi.gt/iris/?channels=taco )
+
+config-version: 1
+world-settings:
+  default:
+    verbose: true
+    fix-east-west-cannoning: false
+    hopper:
+      push-based: true
+      fire-InventoryMoveItemEvent: true
+    allow-non-player-entities-on-scoreboards: false
+    armor-stand:
+      optimize-movement: false
+    grass-ignores-light: false
+    tnt:
+      optimize-liquid-explosions: true
+      optimize-movement: false
+    disable-falling-block-stacking-at-256: false
+    redstone-fire-BlockPhysicsEvent: true

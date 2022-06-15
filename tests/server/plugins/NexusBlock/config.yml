@@ -19,19 +19,23 @@ nexuses:
 
     # Position of nexus
     location:
-      x: 10.0
-      y: 50.0
-      z: 10.0
+      x: 12.0
+      y: 5.0
+      z: 8.0
       world: "world"
 
-    #  Position of hologram (only y, height)
-    hologramLocation: 54.5
+    #  Position of hologram (only y)
+    hologramLocation: 9.5
 
     # Respawn nexus after destroy (in seconds)
     respawn: 10
 
     # Nexus healths
-    healths: 100
+    #healths: 100
+    healths:
+      # Number of destructions (Don't change)
+      health: 0
+      maximumHealth: 100
 
     rewards:
       # First player (top 1)

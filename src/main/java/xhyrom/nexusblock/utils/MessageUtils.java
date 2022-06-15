@@ -9,7 +9,9 @@ public class MessageUtils {
     }
 
     public static String message(String text, boolean prefix) {
-        return NexusBlock.getInstance().config.getString("prefix") + translateColorCodes(text);
+        return prefix ?
+                translateColorCodes(NexusBlock.getInstance().config.getString("prefix") + text) :
+                translateColorCodes(text);
     }
 
     private static String translateColorCodes(String text) {

@@ -1,13 +1,16 @@
 package xhyrom.nexusblock.structures;
 
+import com.google.common.base.Equivalence;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import xhyrom.nexusblock.NexusBlock;
+import xhyrom.nexusblock.api.events.PlayerDestroyNexus;
 import xhyrom.nexusblock.structures.holograms.HologramInterface;
 import xhyrom.nexusblock.structures.nexusConfig.NexusConfigHealths;
 import xhyrom.nexusblock.structures.nexusConfig.NexusConfigHologram;
@@ -25,12 +28,24 @@ public class Nexus {
     private NexusConfigHologram hologram;
     public Object hologramInterface;
     private Long respawn;
-    private NexusConfigHealths healths;
+    public NexusConfigHealths healths;
     private NexusConfigRewards rewards;
     private CopyOnWriteArrayList<String> destroyers = new CopyOnWriteArrayList<>();
-    private static HashMap<String, Integer> destroys = new HashMap<>();
+    private HashMap<String, Integer> destroys = new HashMap<>();
 
-    public Nexus(int id, Material material, NexusConfigHologram hologram, NexusConfigLocation location, long respawn, NexusConfigHealths healths, double hologramLocation, NexusConfigRewards rewards) {
+    public Nexus(
+            int id,
+            Material material,
+            NexusConfigHologram hologram,
+            NexusConfigLocation location,
+            long respawn,
+            NexusConfigHealths healths,
+            double hologramLocation,
+            NexusConfigRewards rewards,
+            CopyOnWriteArrayList<String> destroyers,
+            HashMap<String, Integer> destroys,
+            int currentHealths
+    ) {
         this.id = id;
         this.material = material;
         this.world = Bukkit.getWorld(location.world);
@@ -38,16 +53,21 @@ public class Nexus {
         this.hologram = hologram;
         this.hologramInterface = NexusBlock.getInstance().hologram.createHologram(this.location, this.id, hologramLocation);
         this.respawn = respawn;
-        this.healths = healths;
-        this.rewards = rewards;
 
-        if (this.location.getBlock().getType() == Material.BEDROCK) this.location.getBlock().setType(this.material);
+        this.healths = healths;
+        this.healths.damaged = currentHealths;
+
+        this.rewards = rewards;
+        this.destroyers = destroyers;
+        this.destroys = destroys;
+
+        this.location.getBlock().setType(this.material);
 
         updateHologram(true);
     }
 
     public void onHit(Player player) {
-        this.healths.health++;
+        this.healths.damaged++;
 
         destroys.merge(player.getName(), 1, Integer::sum);
 
@@ -55,20 +75,25 @@ public class Nexus {
             destroyers.add(player.getName());
         }
 
-        Collections.sort(destroyers, new ModuleComparator());
+        Collections.sort(destroyers, new ModuleComparator(destroys));
         if (this.destroyers.size() > this.hologram.positionsHologramPositions.size())
             this.destroyers.remove(this.hologram.positionsHologramPositions.size());
 
         updateHologram(false);
-        if (this.healths.health >= this.healths.maximumHealth)
+        if (this.healths.damaged >= this.healths.maximumHealth)
             onDestroy(player);
     }
 
     private static class ModuleComparator implements Comparator<String> {
+        private HashMap<String, Integer> destroys = new HashMap<>();
+        public ModuleComparator(HashMap<String, Integer> destroys) {
+            this.destroys = destroys;
+        }
+
         @Override
         public int compare(String arg0, String arg1) {
-            int destroys1 = Nexus.destroys.get(arg0);
-            int destroys2 = Nexus.destroys.get(arg1);
+            int destroys1 = this.destroys.get(arg0);
+            int destroys2 = this.destroys.get(arg1);
             if (destroys1 < destroys2 ) {
                 return 1;
             }
@@ -90,7 +115,7 @@ public class Nexus {
                 }
 
                 line = line
-                        .replaceAll("\\{health}", String.valueOf(this.healths.health))
+                        .replaceAll("\\{health}", String.valueOf(this.healths.damaged))
                         .replaceAll("\\{maximumHealth}", String.valueOf(this.healths.maximumHealth));
 
                 if (line.contains("\n")) {
@@ -114,8 +139,6 @@ public class Nexus {
 
                 i++;
             }
-
-            return;
         }
 
         updateHologramHealthPositions();
@@ -130,7 +153,7 @@ public class Nexus {
                     this.hologramInterface,
                     i,
                     line
-                            .replaceAll("\\{health}", String.valueOf(this.healths.health))
+                            .replaceAll("\\{health}", String.valueOf(this.healths.damaged))
                             .replaceAll("\\{maximumHealth}", String.valueOf(this.healths.maximumHealth)),
                     false
             );
@@ -165,7 +188,7 @@ public class Nexus {
                     line.getKey(),
                     line.getValue()
                             .replaceAll("\\{playerName}", playerName)
-                            .replaceAll("\\{count}", String.valueOf(Nexus.destroys.get(playerName))),
+                            .replaceAll("\\{count}", String.valueOf(this.destroys.get(playerName))),
                     false
             );
 
@@ -174,6 +197,11 @@ public class Nexus {
     }
 
     private void onDestroy(Player player) {
+        PlayerDestroyNexus event = new PlayerDestroyNexus(player, this);
+        NexusBlock.getInstance().getServer().getPluginManager().callEvent(event);
+
+        if (event.isCancelled()) return;
+
         this.world.strikeLightningEffect(location);
 
         Block block = this.location.getBlock();
@@ -196,7 +224,7 @@ public class Nexus {
                 Block block = location.getBlock();
                 block.setType(material);
 
-                healths.health = 0;
+                healths.damaged = 0;
                 updateHologramHealthPositions();
 
                 destroyers.clear();
@@ -215,8 +243,27 @@ public class Nexus {
                     Bukkit.getConsoleSender(),
                     reward
                             .replaceAll("\\{playerName}", playerName)
-                            .replaceAll("\\{destroys}", String.valueOf(Nexus.destroys.get(playerName)))
+                            .replaceAll("\\{destroys}", String.valueOf(this.destroys.get(playerName)))
             );
         });
+    }
+
+    public CopyOnWriteArrayList<String> getDestroyers() {
+        return this.destroyers;
+    }
+
+    public HashMap<String, Integer> getDestroys() {
+        HashMap<String, Integer> tempDestroys = new HashMap<>();
+
+        for (int i = 0; i < this.hologram.positionsHologramPositions.size(); i++) {
+            if (this.destroyers.size() <= i) break;
+
+            String playerName = this.destroyers.get(i);
+            if (playerName == null) continue;
+
+            tempDestroys.put(playerName, this.destroys.get(playerName));
+        }
+
+        return tempDestroys;
     }
 }

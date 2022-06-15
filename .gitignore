@@ -1,3 +1,12 @@
+# Other
+tests/server/Rigot.jar
+tests/server/world
+tests/server/world_nether
+tests/server/world_the_end
+tests/server/eula.txt
+tests/server/logs/
+tests/server/crash-reports/
+
 # User-specific stuff
 .idea/
 

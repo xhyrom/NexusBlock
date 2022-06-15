@@ -3,13 +3,16 @@ package xhyrom.nexusblock.structures.nexusConfig;
 import java.util.HashMap;
 
 public class NexusConfigHealths {
-    public int health;
+    public int damaged;
     public int maximumHealth;
 
     public NexusConfigHealths(HashMap<String, Object> other) {
-        if (!(other.get("healths") instanceof HashMap)) return;
+        Object healths = other.get("healths");
+        if (healths instanceof HashMap) {
+            healths = Integer.parseInt(((HashMap<?, ?>) other.get("healths")).get("maximumHealth").toString());
+        }
 
-        this.health = Integer.parseInt(((HashMap<?, ?>) other.get("healths")).get("health").toString());
-        this.maximumHealth = Integer.parseInt(((HashMap<?, ?>) other.get("healths")).get("maximumHealth").toString());
+        this.damaged = 0;
+        this.maximumHealth = Integer.parseInt(healths.toString());
     }
 }

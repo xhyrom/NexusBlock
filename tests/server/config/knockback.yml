@@ -1,0 +1,93 @@
+knockback:
+  profiles:
+    vanilla:
+      stop-sprint: true
+      friction-horizontal: 2.0
+      friction-vertical: 2.0
+      horizontal: 0.4
+      vertical: 0.4
+      vertical-max: 0.4
+      vertical-min: -1.0
+      extra-horizontal: 0.5
+      extra-vertical: 0.1
+      wtap-extra-horizontal: 0.5
+      wtap-extra-vertical: 0.1
+      add-horizontal: 0.0
+      add-vertical: 0.0
+      projectiles:
+        rod:
+          horizontal: 0.4
+          vertical: 0.4
+        arrow:
+          horizontal: 0.4
+          vertical: 0.4
+        pearl:
+          horizontal: 0.4
+          vertical: 0.4
+        snowball:
+          horizontal: 0.4
+          vertical: 0.4
+        egg:
+          horizontal: 0.4
+          vertical: 0.4
+    windpvp:
+      stop-sprint: true
+      friction-horizontal: 1.85
+      friction-vertical: 2.0
+      horizontal: 0.1
+      vertical: 0.3
+      vertical-max: 0.4
+      vertical-min: -1.0
+      extra-horizontal: 0.75
+      extra-vertical: 0.1
+      wtap-extra-horizontal: 0.76
+      wtap-extra-vertical: 0.1
+      add-horizontal: 0.04
+      add-vertical: 0.0
+      projectiles:
+        rod:
+          horizontal: 0.7
+          vertical: 0.5
+        arrow:
+          horizontal: 0.5
+          vertical: 0.4
+        pearl:
+          horizontal: 0.4
+          vertical: 0.4
+        snowball:
+          horizontal: 0.5
+          vertical: 0.4
+        egg:
+          horizontal: 0.7
+          vertical: 0.5
+    kohi:
+      stop-sprint: true
+      friction-horizontal: 2.0
+      friction-vertical: 2.0
+      horizontal: 0.35
+      vertical: 0.35
+      vertical-max: 0.4
+      vertical-min: -1.0
+      extra-horizontal: 0.425
+      extra-vertical: 0.425
+      wtap-extra-horizontal: 0.5
+      wtap-extra-vertical: 0.1
+      add-horizontal: 0.0
+      add-vertical: 0.0
+      projectiles:
+        rod:
+          horizontal: 0.35
+          vertical: 0.35
+        arrow:
+          horizontal: 0.35
+          vertical: 0.35
+        pearl:
+          horizontal: 0.35
+          vertical: 0.35
+        snowball:
+          horizontal: 0.35
+          vertical: 0.35
+        egg:
+          horizontal: 0.35
+          vertical: 0.35
+  current: kohi

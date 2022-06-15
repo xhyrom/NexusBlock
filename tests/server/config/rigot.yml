@@ -1,0 +1,19 @@
+# This is the main configuration file for Rigot.
+# As you can see, there's tons to configure
+
+
+# Configuration version, do NOT modify this!
+config-version: 1
+settings:
+  messages:
+    player:
+      join-message: '&e{0} joined the game.'
+      leave-message: '&e{0} left the game.'
+
+    # The message that sents when the user does not have default permissions.
+    test-permission: '&cI''m sorry, but you do not have permission to perform this
+      command. Please contact the server administrators if you believe that this is
+      in error.'
+
+  # Fully disable usercache file (not recommended for online servers).
+  disable-user-cache-saving: false
