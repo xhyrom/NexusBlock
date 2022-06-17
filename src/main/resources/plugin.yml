@@ -1,7 +1,7 @@
 name: NexusBlock
 version: '${project.version}'
 main: xhyrom.nexusblock.NexusBlock
-api-version: 1.18
+api-version: 1.13
 authors: [ xHyroM ]
 softdepend:
   - HolographicDisplays
