@@ -81,7 +81,7 @@ public final class NexusBlock extends JavaPlugin {
             tempJsonDatabase.addNexus(nexus.id, nexus.getDestroyers(), nexus.getDestroys(), nexus.healths.damaged);
         }
 
-        tempJsonDatabase.toString(getDataFolder() + "\\database.json");
+        tempJsonDatabase.toString(getDataFolder() + "/database.json");
         this.jsonDatabase = tempJsonDatabase;
     }
 
