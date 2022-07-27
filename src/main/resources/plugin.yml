@@ -9,6 +9,8 @@ softdepend:
   - Holograms
   - CMI
   - CMILib
+  - Multiverse-Core
+  - MultiWorld
 
 commands:
   nexusblock:
